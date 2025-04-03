@@ -6,7 +6,7 @@ import httpx
 import json
 import os
 import logging
-from bilibili_api import hot, sync,search,rank
+from bilibili_api import hot, sync,search,rank,video
 
 logger = logging.getLogger("mcp")
 
@@ -74,6 +74,26 @@ async def get_hot_buzzwords():
         return result
     except Exception as e:
         logger.error(f"获取热门搜索词失败: {e}")
+        return None
+
+# 根据BVID获取Bilibili视频详细信息
+@mcp.tool(name="B站视频详细信息",description="根据BVID获取Bilibili视频详细信息")
+async def get_video_detail(bvid: str = Field(description="视频BVID")):
+    """
+    获取Bilibili视频详细信息
+    Args:
+        bvid (str): 视频BVID
+    Returns:
+        dict: 视频详细信息
+    """
+    try:
+        v = video.Video(bvid=bvid)
+        info = sync(v.get_info())
+        tag = sync(v.get_tags())
+        info[tag] = tag
+        return info
+    except Exception as e:
+        logger.error(f"获取视频详细信息失败: {e}")
         return None
 
 def run():

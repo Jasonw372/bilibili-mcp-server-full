@@ -1,6 +1,6 @@
 # bilibili_mcp_server_full
 
-目前最便于安装的Bilibili MCP服务器
+目前最便于安装的Bilibili MCP服务器, 支持最新的MCP协议，推荐使用Cherry Studio进行开发和使用，采用uv作为包管理工具。
 
 ## 开发
 
@@ -30,8 +30,7 @@ uv run --with mcp mcp run src/bilibili_mcp_server_full/server.py
 "bilibili-mcp-server-full": {
   "command": "uvx",
   "args": [
-    "bilibili-mcp-server-full",
-    "@latest",
+    "bilibili-mcp-server-full@latest",
     "check"
   ],
   "disabled": false
