@@ -37,4 +37,4 @@ uv run --with mcp mcp run src/bilibili_mcp_server_full/server.py
 }
 ```
 
-![Cherry Studio使用](./assests/image.png)
+![Cherry Studio使用](./assests/cherry.png)
